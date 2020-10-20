@@ -20,6 +20,7 @@
     export default {
         name: "Table",
         data() {
+
             return {
                 tableData: [{
                     date: '2016-05-02',
