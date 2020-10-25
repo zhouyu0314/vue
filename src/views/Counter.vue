@@ -14,10 +14,11 @@
         <br>
         <hr>
         <my-slot>
+            <!--此为普通插槽，子组件中定义的<slot></slot>内的内容-->
             <h3>自定义内容(slot)</h3>
             <h3>自定义内容(slot)</h3>
             <h3>自定义内容(slot)</h3>
-            <!--<template v-slot:default="left"><button>具名slot-1</button></template>-->
+            <!--具名插槽，按子组件插槽的名字识别<slot name="left"></slot>-->
             <template v-slot:left>
                 <button>具名slot-1</button>
             </template>
@@ -30,8 +31,9 @@
                 <router-link to="#">具名slot-3</router-link>
             </template>
 <!--混合 v-slot:name="xxx"-->
-            <template v-slot:scope="data">
-                <button v-for="item in data.data">{{item}}</button>
+            <!--<template v-slot:asd(作用域插槽的名字)="data(这个名字随便起,代表的是子组件的值)">-->
+            <template v-slot:name="dataA">
+                <button v-for="item in dataA.dataB">{{item}}</button><!--dataA.dataB dataA是拿到的子组件传过来的值(:dataB="lan"),dataB是代表的才是lan-->
             </template>
         </my-slot>
         <button @click="toIndex">回到主页</button>

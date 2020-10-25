@@ -30,6 +30,7 @@ import Tree from "../views/Tree";
 import Menu from "../views/Menu";
 import RenderDemo from "../views/RenderDemo";
 import Test from "../views/Test";
+import VueSimpleUpload from "../views/VueSimpleUpload";
 Vue.use(VueRouter)
 
 const routes = [
@@ -59,7 +60,9 @@ const routes = [
     {path: '/tree', component: Tree},
     {path: '/renderDemo', component: RenderDemo},
     {path: '/test', component: Test},
+    {path: '/vueSimpleUpload', component: VueSimpleUpload},
     {path: '/*', component: NotFound}
+
 ]
 
 const router = new VueRouter({

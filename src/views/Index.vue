@@ -27,6 +27,8 @@
         <button @click="toTree">跳转到tree</button>
         <button @click="toRenderDemo">跳转到renderDemo</button>
         <button @click="toTest">跳转到Test</button>
+        <el-divider></el-divider>
+        <el-button type="primary" @click="toVueSimpleUpload">跳转到VueSimpleUpload</el-button>
     </div>
 </template>
 
@@ -113,6 +115,9 @@
             },
             toTest(){
                 this.$router.push("test")
+            },
+            toVueSimpleUpload(){
+                this.$router.push("vueSimpleUpload")
             }
         }
     }
