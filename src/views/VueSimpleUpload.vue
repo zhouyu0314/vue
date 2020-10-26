@@ -22,10 +22,13 @@
                 <el-form-item>
                     <el-button type="primary" @click="handleDownloadBtn">资料下载</el-button>
                 </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="handleAxios">测试axios</el-button>
+                </el-form-item>
             </el-form>
         </el-row>
         <el-divider></el-divider>
-
+        <h3 v-text="axiosText"></h3>
         <el-table :data="resultParam" border style="width: 100%" size="mini">
             <el-table-column prop="fileName" label="文件名称"></el-table-column>
             <el-table-column prop="fileShowName" label="显示名称"></el-table-column>
@@ -39,8 +42,9 @@
                 <el-button type="danger" size="mini">删除</el-button>
                 <el-button type="success" size="mini">下载</el-button>
             </el-table-column>
-
         </el-table>
+        <el-divider></el-divider>
+
 
         <el-dialog title="文件上传" :visible.sync="uploadWindowVisible" width="670px" :close-on-click-modal="false"
                    @close="handleDialogClose">
@@ -89,7 +93,9 @@
                 <el-table-column prop="remark" label="备注"></el-table-column>
                 <el-table-column label="操作" width="80px">
                     <template slot-scope="scope">
-                        <el-button type="success" size="mini" @click="handleDownload(scope.row)" v-show="scope.row.size">下载</el-button>
+                        <el-button type="success" size="mini" @click="handleDownload(scope.row)"
+                                   v-show="scope.row.size">下载
+                        </el-button>
                     </template>
                 </el-table-column>
 
@@ -100,10 +106,14 @@
 </template>
 
 <script>
+    import axios from 'axios';
+    import qs from 'qs';
+
     export default {
         name: "VueSimpleUpload",
         data() {
             return {
+                axiosText: '',
                 options: {
                     target: '//localhost:8001/api/file/uploadFile', // '//jsonplaceholder.typicode.com/posts/',
                     testChunks: false
@@ -370,6 +380,19 @@
             this.setStyle();
         },
         methods: {
+            //测试axios
+            handleAxios() {
+                axios.post(
+                    "http://localhost:8001/api/file/axiosTest",
+                    qs.stringify({
+                        username: '张三',
+                        passwd: '123asd'
+                    })
+                ).then(result => {
+                    this.axiosText = result.data.data;
+                })
+
+            },
             handleDownload(row) {
                 console.log(row);
 
