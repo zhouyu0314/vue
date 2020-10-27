@@ -23,12 +23,11 @@
                     <el-button type="primary" @click="handleDownloadBtn">资料下载</el-button>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="handleAxios">测试axios</el-button>
+                    <el-button type="primary" @click="handleDownloadFile">测试文件下载</el-button>
                 </el-form-item>
             </el-form>
         </el-row>
         <el-divider></el-divider>
-        <h3 v-text="axiosText"></h3>
         <el-table :data="resultParam" border style="width: 100%" size="mini">
             <el-table-column prop="fileName" label="文件名称"></el-table-column>
             <el-table-column prop="fileShowName" label="显示名称"></el-table-column>
@@ -113,7 +112,6 @@
         name: "VueSimpleUpload",
         data() {
             return {
-                axiosText: '',
                 options: {
                     target: '//localhost:8001/api/file/uploadFile', // '//jsonplaceholder.typicode.com/posts/',
                     testChunks: false
@@ -380,17 +378,20 @@
             this.setStyle();
         },
         methods: {
-            //测试axios
-            handleAxios() {
-                axios.post(
-                    "http://localhost:8001/api/file/axiosTest",
-                    qs.stringify({
-                        username: '张三',
-                        passwd: '123asd'
-                    })
-                ).then(result => {
-                    this.axiosText = result.data.data;
-                })
+            //测试文件下载
+            handleDownloadFile() {
+                const a = document.createElement('a'); // 创建a标签
+                a.setAttribute('href', '//localhost:8001/api/file/download/couldDemo.zip');// download属性
+                a.setAttribute('download', 'couldDemo.zip');// href链接
+                //a.setAttribute('target', '_blank');// href链接
+                a.click();//点击事件
+                // axios.post(
+                //     "http://localhost:8001/api/file/download",
+                //     qs.stringify({
+                //         fileName: 'couldDemo.zip',
+                //     })
+                // ).then(result => {
+                // })
 
             },
             handleDownload(row) {
