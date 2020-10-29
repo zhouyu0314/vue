@@ -100,13 +100,16 @@
 
             </el-table>
         </el-dialog>
+
+
+        <form id="form" method="post" action="//localhost:8001/api/file/download/" v-show="false">
+            <input type="text" name="fileName" :value="this.filename"></input>
+        </form>
     </div>
 
 </template>
 
 <script>
-    import axios from 'axios';
-    import qs from 'qs';
 
     export default {
         name: "VueSimpleUpload",
@@ -371,7 +374,8 @@
                 paramRules: {
                     fileShowName: [{required: true, message: '请输入文件显示名称', trigger: 'blur'}],
                     fileType: [{required: true, message: '请至少选择一个分类', trigger: 'change'}]
-                }
+                },
+                filename:'crossover-20.zip',
             }
         },
         mounted() {
@@ -380,19 +384,29 @@
         methods: {
             //测试文件下载
             handleDownloadFile() {
-                const a = document.createElement('a'); // 创建a标签
-                a.setAttribute('href', '//localhost:8001/api/file/download/couldDemo.zip');// download属性
-                a.setAttribute('download', 'couldDemo.zip');// href链接
-                //a.setAttribute('target', '_blank');// href链接
-                a.click();//点击事件
-                // axios.post(
-                //     "http://localhost:8001/api/file/download",
-                //     qs.stringify({
-                //         fileName: 'couldDemo.zip',
-                //     })
-                // ).then(result => {
-                // })
+                //
+                // const a = document.createElement('a'); // 创建a标签
+                // a.setAttribute('href', '//localhost:8001/api/file/download/' + this.filename);// download属性
+                // a.setAttribute('download', 'crossover-20.zip');// href链接
+                // a.click();//点击事件
 
+
+
+
+                const a = document.createElement('a'); // 创建a标签
+                a.setAttribute('href', '#');// download属性
+                a.setAttribute('onclick', this.formDownload()+';return false;');// href链接
+                a.click();//点击事件
+
+
+            },
+
+            formDownload(){
+                // const form = document.createElement('form');
+                // form.setAttribute('method','get');
+                // form.setAttribute('action','//localhost:8001/api/file/download/' + this.filename);
+                // form.submit();
+                document.getElementById("form").submit();
             },
             handleDownload(row) {
                 console.log(row);
@@ -411,9 +425,7 @@
             },
             handleDownloadDialog() {
                 let data = this.$refs.downloadDialog;
-                // for(var i=0;i<this.$refs.downloadDialog.store._getAllNodes().length;i++){
-                //     this.$refs.downloadDialog.store._getAllNodes()[i].expanded=false;
-                // }
+
 
 
             },
