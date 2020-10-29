@@ -105,16 +105,27 @@
         <form id="form" method="post" action="//localhost:8001/api/file/download/" v-show="false">
             <input type="text" name="fileName" :value="this.filename"></input>
         </form>
+
+        <el-divider></el-divider>
+
+        <el-button @click="handleInsertList" type="primary">测试批量插入</el-button>
     </div>
 
 </template>
 
 <script>
-
+    import axios from 'axios';
+    import qs from 'qs';
     export default {
         name: "VueSimpleUpload",
         data() {
             return {
+                list:[
+                    {codeId:'A10001',name:'张三'},
+                    {codeId:'A10002',name:'李四'},
+                    {codeId:'A10003',name:'王五'},
+                    {codeId:'A10004',name:'赵六'},
+                    {codeId:'A10005',name:'田七'}],//用于测试批量插入
                 options: {
                     target: '//localhost:8001/api/file/uploadFile', // '//jsonplaceholder.typicode.com/posts/',
                     testChunks: false
@@ -384,15 +395,6 @@
         methods: {
             //测试文件下载
             handleDownloadFile() {
-                //
-                // const a = document.createElement('a'); // 创建a标签
-                // a.setAttribute('href', '//localhost:8001/api/file/download/' + this.filename);// download属性
-                // a.setAttribute('download', 'crossover-20.zip');// href链接
-                // a.click();//点击事件
-
-
-
-
                 const a = document.createElement('a'); // 创建a标签
                 a.setAttribute('href', '#');// download属性
                 a.setAttribute('onclick', this.formDownload()+';return false;');// href链接
@@ -402,10 +404,6 @@
             },
 
             formDownload(){
-                // const form = document.createElement('form');
-                // form.setAttribute('method','get');
-                // form.setAttribute('action','//localhost:8001/api/file/download/' + this.filename);
-                // form.submit();
                 document.getElementById("form").submit();
             },
             handleDownload(row) {
@@ -457,6 +455,18 @@
             },
             testUploader() {
                 console.log(this.$refs.uploader);
+            },
+            //测试批量插入
+            handleInsertList(){
+                let param = {
+                    list: this.list
+                }
+                axios.post(
+                    "http://localhost:8001/api/test/addList",
+                    param
+                ).then(result => {
+
+                })
             }
         }
         ,
