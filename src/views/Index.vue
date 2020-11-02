@@ -29,6 +29,7 @@
         <button @click="toTest">跳转到Test</button>
         <el-divider></el-divider>
         <el-button type="primary" @click="toVueSimpleUpload">跳转到VueSimpleUpload</el-button>
+        <el-button type="primary" @click="toFilterDemo">跳转到FilterDemo</el-button>
     </div>
 </template>
 
@@ -42,82 +43,85 @@
             toCounter() {
                 this.$router.push("Counter")
             },
-            toTask(){
+            toTask() {
                 this.$router.push("task")
             },
-            toEui(){
+            toEui() {
                 this.$router.push("eui")
             },
-            toCascade(){
+            toCascade() {
                 this.$router.push("cascade")
             },
-            toSwitch(){
+            toSwitch() {
                 this.$router.push("switch")
             },
-            toSlider(){
+            toSlider() {
                 this.$router.push("slider")
             },
-            toTimePicker(){
+            toTimePicker() {
                 this.$router.push("timePicker")
             },
-            toDatePicker(){
+            toDatePicker() {
                 this.$router.push("datePicker")
             },
-            toUpload(){
+            toUpload() {
                 this.$router.push("upload")
             },
-            toTransfer(){
+            toTransfer() {
                 this.$router.push("transfer")
             },
-            toForm(){
+            toForm() {
                 this.$router.push("form")
             },
-            toTable(){
+            toTable() {
                 this.$router.push("table")
             },
-            toTable1(){
+            toTable1() {
                 this.$router.push("table1")
             },
-            toTableSort(){
+            toTableSort() {
                 this.$router.push("tableSort")
             },
-            toTableFilters(){
+            toTableFilters() {
                 this.$router.push("tableFilters")
             },
-            toTag(){
+            toTag() {
                 this.$router.push("tag")
             },
-            toPage(){
+            toPage() {
                 this.$router.push("page")
             },
-            toBadge(){
+            toBadge() {
                 this.$router.push("badge")
             },
-            toAlert(){
+            toAlert() {
                 this.$router.push("alert")
             },
-            toLoading(){
+            toLoading() {
                 this.$router.push("loading")
             },
-            toMessage(){
+            toMessage() {
                 this.$router.push("message")
             },
-            toMessageBox(){
+            toMessageBox() {
                 this.$router.push("messageBox")
             },
-            toMenu(){
+            toMenu() {
                 this.$router.push("menu")
             },
-            toTree(){
+            toTree() {
                 this.$router.push("tree")
-            },toRenderDemo(){
+            }, toRenderDemo() {
                 this.$router.push("renderDemo")
             },
-            toTest(){
+            toTest() {
                 this.$router.push("test")
             },
-            toVueSimpleUpload(){
+            toVueSimpleUpload() {
                 this.$router.push("vueSimpleUpload")
+            },
+            toFilterDemo() {
+                this.$router.push("filterDemo")
             }
         }
     }

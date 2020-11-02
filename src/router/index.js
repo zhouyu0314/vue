@@ -31,6 +31,7 @@ import Menu from "../views/Menu";
 import RenderDemo from "../views/RenderDemo";
 import Test from "../views/Test";
 import VueSimpleUpload from "../views/VueSimpleUpload";
+import FilterDemo from "../views/FilterDemo";
 Vue.use(VueRouter)
 
 const routes = [
@@ -61,6 +62,7 @@ const routes = [
     {path: '/renderDemo', component: RenderDemo},
     {path: '/test', component: Test},
     {path: '/vueSimpleUpload', component: VueSimpleUpload},
+    {path: '/filterDemo', component: FilterDemo},
     {path: '/*', component: NotFound}
 
 ]
