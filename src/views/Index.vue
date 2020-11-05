@@ -30,6 +30,7 @@
         <el-divider></el-divider>
         <el-button type="primary" @click="toVueSimpleUpload">跳转到VueSimpleUpload</el-button>
         <el-button type="primary" @click="toFilterDemo">跳转到FilterDemo</el-button>
+        <el-button type="primary" @click="toHandleJSON">跳转到HandleJSON</el-button>
     </div>
 </template>
 
@@ -122,6 +123,9 @@
             },
             toFilterDemo() {
                 this.$router.push("filterDemo")
+            },
+            toHandleJSON() {
+                this.$router.push("handleJSON")
             }
         }
     }

@@ -102,13 +102,16 @@
         </el-dialog>
 
 
-        <form id="form" method="post" action="//localhost:8001/api/file/download/" v-show="false">
+        <form id="form" method="post" action="//localhost:8001/api/file/download" v-show="false">
             <input type="text" name="fileName" :value="this.filename"></input>
+            <input type="text" name="username" value="zhangsan"></input>
         </form>
 
         <el-divider></el-divider>
 
         <el-button @click="handleInsertList" type="primary">测试批量插入</el-button>
+
+
 
 
 
@@ -396,6 +399,7 @@
             this.setStyle();
         },
         methods: {
+
             //测试文件下载
             handleDownloadFile() {
                 const a = document.createElement('a'); // 创建a标签

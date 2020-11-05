@@ -4,9 +4,6 @@ import Index from '../views/Index'
 import Counter from '../views/Counter'
 import NotFound from '../views/404'
 import Eui from '../views/Eui'
-
-Vue.use(VueRouter)
-
 import Cascade from '../views/Cascader'
 import Switch from '../views/Switch'
 import Slider from '../views/Slider'
@@ -32,8 +29,8 @@ import RenderDemo from "../views/RenderDemo";
 import Test from "../views/Test";
 import VueSimpleUpload from "../views/VueSimpleUpload";
 import FilterDemo from "../views/FilterDemo";
+import HandleJSON from "../views/HandleJSON";
 Vue.use(VueRouter)
-
 const routes = [
     {path: '/', component: Index},
     {path: '/counter', component: Counter},
@@ -63,6 +60,7 @@ const routes = [
     {path: '/test', component: Test},
     {path: '/vueSimpleUpload', component: VueSimpleUpload},
     {path: '/filterDemo', component: FilterDemo},
+    {path: '/handleJSON', component: HandleJSON},
     {path: '/*', component: NotFound}
 
 ]
