@@ -111,6 +111,32 @@
 
         <el-button @click="handleInsertList" type="primary">测试批量插入</el-button>
 
+        <el-divider>vue测试过滤器</el-divider>
+
+        <span v-text="$options.filters.vueFilter1(vueFilter)"></span>
+        <el-divider></el-divider>
+
+        <el-form ref="sel" :model="progressList" label-width="100px" size="mini" :inline="true">
+            <el-form-item label="证件号码" prop="codeno">
+            <el-input v-model="progressList.codeno" clearable></el-input>
+        </el-form-item>
+            <el-form-item label="选择审核进度" prop="progressName">
+                <el-select v-model="progressList.progressName">
+                    <el-option v-for="item in progressNameList" :value="item.progressNameCode"
+                               :label="item.progressName"></el-option>
+                </el-select>
+            </el-form-item>
+
+            <el-form-item label="选择审核状态" prop="progressState">
+                <el-select v-model="progressList.progressState">
+                    <el-option v-for="item in progressStateList" :value="item.progressStateCode"
+                               :label="item.progressStateName"></el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="handleSelect">提交</el-button>
+            </el-form-item>
+        </el-form>
 
 
 
@@ -122,16 +148,38 @@
 <script>
     import axios from 'axios';
     import qs from 'qs';
+
     export default {
         name: "VueSimpleUpload",
         data() {
             return {
-                list:[
-                    {codeId:'A10001',name:'张三'},
-                    {codeId:'A10002',name:'李四'},
-                    {codeId:'A10003',name:'王五'},
-                    {codeId:'A10004',name:'赵六'},
-                    {codeId:'A10005',name:'田七'}],//用于测试批量插入
+
+                progressList:{
+                    codeno:'',
+                    progressState:'',
+                    progressName:'',
+                },
+                progressStateList:[{progressStateName:'通过',progressStateCode:-1},
+                    {progressStateName:'通过',progressStateCode:1}],
+                progressNameList:[{progressName:'提交通过',progressNameCode:1},
+                    {progressName:'初审',progressNameCode:2},
+                    {progressName:'复审',progressNameCode:3}],
+
+                url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+                // srcList: [
+                //     'https://fuss10.elemecdn.com/8/27/f01c15bb73e1ef3793e64e6b7bbccjpeg.jpeg',
+                //     'https://fuss10.elemecdn.com/1/8e/aeffeb4de74e2fde4bd74fc7b4486jpeg.jpeg'
+                // ],
+                srcList: [
+                    'https://fuss10.elemecdn.com/8/27/f01c15bb73e1ef3793e64e6b7bbccjpeg.jpeg',
+                ],
+                vueFilter: 2,
+                list: [
+                    {codeId: 'A10001', name: '张三'},
+                    {codeId: 'A10002', name: '李四'},
+                    {codeId: 'A10003', name: '王五'},
+                    {codeId: 'A10004', name: '赵六'},
+                    {codeId: 'A10005', name: '田七'}],//用于测试批量插入
                 options: {
                     target: '//localhost:8001/api/file/uploadFile', // '//jsonplaceholder.typicode.com/posts/',
                     testChunks: false
@@ -392,25 +440,27 @@
                     fileShowName: [{required: true, message: '请输入文件显示名称', trigger: 'blur'}],
                     fileType: [{required: true, message: '请至少选择一个分类', trigger: 'change'}]
                 },
-                filename:'crossover-20.zip',
+                filename: 'crossover-20.zip',
             }
         },
         mounted() {
             this.setStyle();
         },
         methods: {
-
+            handleSelect(){
+                console.log(this.progressList);
+            },
             //测试文件下载
             handleDownloadFile() {
                 const a = document.createElement('a'); // 创建a标签
                 a.setAttribute('href', '#');// download属性
-                a.setAttribute('onclick', this.formDownload()+';return false;');// href链接
+                a.setAttribute('onclick', this.formDownload() + ';return false;');// href链接
                 a.click();//点击事件
 
 
             },
 
-            formDownload(){
+            formDownload() {
                 document.getElementById("form").submit();
             },
             handleDownload(row) {
@@ -430,7 +480,6 @@
             },
             handleDownloadDialog() {
                 let data = this.$refs.downloadDialog;
-
 
 
             },
@@ -464,7 +513,7 @@
                 console.log(this.$refs.uploader);
             },
             //测试批量插入
-            handleInsertList(){
+            handleInsertList() {
                 let param = {
                     list: this.list
                 }
@@ -475,8 +524,19 @@
 
                 })
             }
-        }
-        ,
+        },
+        filters: {
+            vueFilter1(oldValue) {
+                if (oldValue == 1) {
+                    return oldValue = '翻译1';
+                } else if (oldValue == 2) {
+                    return oldValue = '翻译2';
+                } else {
+                    return oldValue = '';
+                }
+
+            }
+        },
         watch: {}
     }
 </script>
@@ -502,5 +562,13 @@
 
     .success-row {
         background: #f0f9eb;
+    }
+</style>
+
+<style>
+    .div-1 {
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
     }
 </style>
