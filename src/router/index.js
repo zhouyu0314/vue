@@ -30,6 +30,7 @@ import Test from "../views/Test";
 import VueSimpleUpload from "../views/VueSimpleUpload";
 import FilterDemo from "../views/FilterDemo";
 import HandleJSON from "../views/HandleJSON";
+import WebSocket from "../views/WebSocket";
 Vue.use(VueRouter)
 const routes = [
     {path: '/', component: Index},
@@ -61,6 +62,7 @@ const routes = [
     {path: '/vueSimpleUpload', component: VueSimpleUpload},
     {path: '/filterDemo', component: FilterDemo},
     {path: '/handleJSON', component: HandleJSON},
+    {path: '/webSocket', component: WebSocket},
     {path: '/*', component: NotFound}
 
 ]

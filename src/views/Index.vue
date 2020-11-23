@@ -31,6 +31,7 @@
         <el-button type="primary" @click="toVueSimpleUpload">跳转到VueSimpleUpload</el-button>
         <el-button type="primary" @click="toFilterDemo">跳转到FilterDemo</el-button>
         <el-button type="primary" @click="toHandleJSON">跳转到HandleJSON</el-button>
+        <el-button type="primary" @click="toWebSocket">跳转到WebSocket</el-button>
     </div>
 </template>
 
@@ -126,6 +127,9 @@
             },
             toHandleJSON() {
                 this.$router.push("handleJSON")
+            },
+            toWebSocket() {
+                this.$router.push("webSocket")
             }
         }
     }
