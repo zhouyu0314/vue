@@ -32,6 +32,7 @@
         <el-button type="primary" @click="toFilterDemo">跳转到FilterDemo</el-button>
         <el-button type="primary" @click="toHandleJSON">跳转到HandleJSON</el-button>
         <el-button type="primary" @click="toWebSocket">跳转到WebSocket</el-button>
+        <el-button type="primary" @click="toQSTB">跳转到KSTB</el-button>
     </div>
 </template>
 
@@ -130,6 +131,9 @@
             },
             toWebSocket() {
                 this.$router.push("webSocket")
+            },
+            toQSTB(){
+                this.$router.push("kstb")
             }
         }
     }
