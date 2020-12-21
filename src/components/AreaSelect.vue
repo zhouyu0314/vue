@@ -6,7 +6,7 @@
                          inline>
                     <el-form-item label="请选择省">
                         <el-select clearable v-model="ArearesultParam.province" placeholder="请选择"
-                                   @change="handleProvinceChange(1)">
+                                   @change="handleSelChange(1)">
                             <el-option
                                     v-for="item in areaParam.provinceList"
                                     :key="item.id"
@@ -18,7 +18,7 @@
 
                     <el-form-item label="请选择市">
                         <el-select clearable v-model="ArearesultParam.city" placeholder="请选择"
-                                   @change="handleProvinceChange(2)">
+                                   @change="handleSelChange(2)">
                             <el-option
                                     v-for="item in areaParam.cityList"
                                     :key="item.id"
@@ -30,7 +30,7 @@
 
                     <el-form-item label="请选择区县">
                         <el-select clearable v-model="ArearesultParam.region" placeholder="请选择"
-                                   @change="handleProvinceChange(3)">
+                                   @change="handleSelChange(3)">
                             <el-option
                                     v-for="item in areaParam.regionList"
                                     :key="item.id"
@@ -42,7 +42,7 @@
 
                     <el-form-item label="请选择网点">
                         <el-select clearable v-model="ArearesultParam.branch" placeholder="请选择"
-                                   @change="handleProvinceChange(4)">
+                                   @change="handleSelChange(4)">
                             <el-option
                                     v-for="item in areaParam.branchList"
                                     :key="item.id"
@@ -63,27 +63,18 @@
         name: "AreaSselect",
         props: ['AreaInitData', 'SubAreaList'],
         computed: {
-            getResultParamProvince: function () {
-                return this.ArearesultParam.province;
-            },
-            getResultParamcity: function () {
-                return this.ArearesultParam.city;
-            },
-            getResultRegion: function () {
-                return this.ArearesultParam.region;
-            }
         },
         created() {
-
         },
         mounted() {
-
         },
         watch: {
+            //监听父组件在created阶段发送过来的数据
             AreaInitData() {
                 console.log("AreaInitData");
                 this.initArea();
             },
+            //此处必须深度监听，要不然值可以得到，但是不会触发任何监视函数
             SubAreaList: {
                 handler(val) {
                     this.initSubArea();
@@ -116,14 +107,17 @@
             btn() {
                 console.log(this.SubAreaList);
             },
+            //初始化省级选择框
             initArea() {
                 this.areaParam.provinceList = this.AreaInitData;
             },
+            //初始化子选择框
             initSubArea() {
+                //判断当前操作的是哪一级选择框
                 switch (this.SubAreaList.flag) {
-                    case 1://如果操作的是省级选择框
+                    case 1://如果操作的是省级选择框，那么后端请求的数据就是其下一级的数据（市级）
                         this.areaParam.cityList = this.SubAreaList.SubAreaData;
-                        this.areaParam.regionList = [];
+                        this.areaParam.regionList = [];//清除市级选择框之后的数据
                         this.areaParam.branchList = [];
 
                         this.ArearesultParam.city = '';
@@ -144,26 +138,22 @@
                         break;
                 }
             },
-            handleProvinceChange(num) {//省级选择框改变事件
-                console.log("handleProvinceChange");
-                this.getSUbAreaFromSys(num);
-            },
-            //区域选择 根据id获取子集阶段
-            getSUbAreaFromSys(num) {
+            //选择框改变事件 根据id获取子集数据 参数为当前操作的选择框的flag 1 省 2市 3区县 4网点
+            handleSelChange(num) {
                 //获取flag得知当前正在操作的是哪个选择框
                 let flag = num;
                 let data;
                 switch (flag) {
-                    case 1://如果操作的是省级选择框
+                    case 1://如果操作的是省级选择框，则将省级所有数据拿到
                         data = this.areaParam.provinceList;
                         break;
-                    case 2://如果操作的是市级选择框
+                    case 2://如果操作的是市级选择框，则将市级所有数据拿到
                         data = this.areaParam.cityList;
                         break;
-                    case 3://如果操作的是区县级选择框
+                    case 3://如果操作的是区县级选择框，则将区县级所有数据拿到
                         data = this.areaParam.regionList;
                         break;
-                    case 4://如果操作的是网点级选择框
+                    case 4://如果操作的是网点级选择框，则将网点级所有数据拿到
                         data = this.areaParam.branchList;
                         break;
                 }
@@ -179,10 +169,10 @@
                         }
                     });
                     let param = {id: id, flag: num}
+                    //连同flag一起发给父
                     this.$emit('AreaId', param);
                 }
-
-            }
+            },
         }
     }
 </script>
