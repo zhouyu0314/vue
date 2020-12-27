@@ -34,6 +34,7 @@
         <el-button type="primary" @click="toWebSocket">跳转到WebSocket</el-button>
         <el-button type="primary" @click="toQSTB">跳转到KSTB</el-button>
         <el-button type="primary" @click="toBus">跳转到BUS</el-button>
+        <el-button type="primary" @click="toSlotDemo">跳转到SlotDemo</el-button>
     </div>
 </template>
 
@@ -138,7 +139,11 @@
             },
             toBus(){
                 this.$router.push("bus")
+            },
+            toSlotDemo(){
+                this.$router.push("slotDemo")
             }
+
         }
     }
 </script>

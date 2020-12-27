@@ -33,6 +33,7 @@ import HandleJSON from "../views/HandleJSON";
 import WebSocket from "../views/WebSocket";
 import KSTB_BusinessCommit from "../views/KSTB_BusinessCommit";
 import Bus from "../views/bus/Bus";
+import SlotDemo from "../views/slot/SlotDemo";
 Vue.use(VueRouter)
 const routes = [
     {path: '/', component: Index},
@@ -67,6 +68,7 @@ const routes = [
     {path: '/webSocket', component: WebSocket},
     {path: '/kstb', component: KSTB_BusinessCommit},
     {path: '/bus', component: Bus},
+    {path: '/slotDemo', component: SlotDemo},
     {path: '/*', component: NotFound}
 
 ]
