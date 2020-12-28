@@ -1,5 +1,12 @@
 <template>
     <div>
+        <el-row :gutter="10">
+            <el-col :span="6">
+                <el-input size="mini" v-model="userId" clearable></el-input>
+            </el-col>
+            <el-col :span="2"><el-button type="primary" size="mini">提交</el-button></el-col>
+        </el-row>
+
         <div style="height: 600px;overflow: auto">
             <p v-for="(item,index) of chatList" v-text="item" :key="index"></p>
         </div>
@@ -15,6 +22,8 @@
         name: "WebSocket",
         data(){
             return {
+                userId:'',
+                channelId:'',
                 websocket:null,
                 chatList:[],
                 message:'',
@@ -35,23 +44,22 @@
                 this.websocket.onclose = this.websocketclose;
             },
             websocketonopen(){ //连接建立之后执行send方法发送数据
-                let actions = {"test":"12345"};
-                this.websocketsend(JSON.stringify(actions));
+                // let param = {userId:this.userId};
+                // this.websocketsend(param);
+
             },
             websocketonerror(){//连接建立失败重连
+
                 this.initWebSocket();
             },
             websocketonmessage(e){
-                console.log("接受消息");
-                debugger//数据接收
-                const redata = JSON.parse(e.data);
-                console.log("redata",redata);
-                console.log("e",e);
-                // this.chatList.push(e);
-                this.chatList.push(redata);
+                console.log(e);
+                console.log(e.data);
+                //this.chatList.splice(this.chatList.length,0,e.data)
             },
-            websocketsend(Data){//数据发送
-                this.websocket.send(Data);
+            websocketsend(data){//数据发送
+                let json  = JSON.stringify(data);
+                this.websocket.send(json);
             },
             websocketclose(e){  //关闭
                 console.log('断开连接',e);

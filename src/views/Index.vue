@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div >
         <h1 style="text-align: center">this is my index</h1>
         <button @click="toCounter">跳转到计数器</button>
         <button @click="toTask">跳转到task</button>
@@ -28,13 +28,15 @@
         <button @click="toRenderDemo">跳转到renderDemo</button>
         <button @click="toTest">跳转到Test</button>
         <el-divider></el-divider>
-        <el-button type="primary" @click="toVueSimpleUpload">跳转到VueSimpleUpload</el-button>
-        <el-button type="primary" @click="toFilterDemo">跳转到FilterDemo</el-button>
-        <el-button type="primary" @click="toHandleJSON">跳转到HandleJSON</el-button>
-        <el-button type="primary" @click="toWebSocket">跳转到WebSocket</el-button>
-        <el-button type="primary" @click="toQSTB">跳转到KSTB</el-button>
-        <el-button type="primary" @click="toBus">跳转到BUS</el-button>
-        <el-button type="primary" @click="toSlotDemo">跳转到SlotDemo</el-button>
+        <el-button type="primary" @click="toVueSimpleUpload" style="margin-top: 10px">跳转到VueSimpleUpload</el-button>
+        <el-button type="primary" @click="toFilterDemo" style="margin-top: 10px">跳转到FilterDemo</el-button>
+        <el-button type="primary" @click="toHandleJSON" style="margin-top: 10px">跳转到HandleJSON</el-button>
+        <el-button type="primary" @click="toWebSocket" style="margin-top: 10px">跳转到WebSocket</el-button>
+        <el-button type="primary" @click="toQSTB" style="margin-top: 10px">跳转到KSTB</el-button>
+        <el-button type="primary" @click="toBus" style="margin-top: 10px">跳转到BUS</el-button>
+        <el-button type="primary" @click="toSlotDemo" style="margin-top: 10px">跳转到SlotDemo</el-button>
+        <el-button type="primary" @click="toPromiseDemo" style="margin-top: 10px">跳转到Promise</el-button>
+        <el-button type="primary" @click="toVuejs" style="margin-top: 10px">跳转到Vuejs</el-button>
     </div>
 </template>
 
@@ -142,7 +144,13 @@
             },
             toSlotDemo(){
                 this.$router.push("slotDemo")
-            }
+            },
+            toPromiseDemo(){
+                this.$router.push("promiseDemo")
+            },
+            toVuejs(){
+                this.$router.push("vuejs")
+            },
 
         }
     }

@@ -34,6 +34,14 @@ import WebSocket from "../views/WebSocket";
 import KSTB_BusinessCommit from "../views/KSTB_BusinessCommit";
 import Bus from "../views/bus/Bus";
 import SlotDemo from "../views/slot/SlotDemo";
+import PromiseDemo from "../views/Promise/PromiseDemo";
+import Vuejs from "../views/Vue.js实战/views/Vuejs";
+import Computed from "../views/Vue.js实战/views/computed/Computed";
+import ArrayUpdate from "../views/Vue.js实战/views/数组更新/ArrayUpdate";
+import ArrayFilterAndSort from "../views/Vue.js实战/views/数组更新/ArrayFilterAndSort";
+import Event from "../views/Vue.js实战/views/$event/Event";
+import Components from "../views/Vue.js实战/views/组件详解/Components";
+import NextTick from "../views/Vue.js实战/views/$nextTick/NextTick";
 Vue.use(VueRouter)
 const routes = [
     {path: '/', component: Index},
@@ -69,6 +77,14 @@ const routes = [
     {path: '/kstb', component: KSTB_BusinessCommit},
     {path: '/bus', component: Bus},
     {path: '/slotDemo', component: SlotDemo},
+    {path: '/promiseDemo', component: PromiseDemo},
+    {path: '/vuejs', component: Vuejs},
+    {path: '/computed', component: Computed},
+    {path: '/arrayUpdate', component: ArrayUpdate},
+    {path: '/arrayFilterAndSort', component: ArrayFilterAndSort},
+    {path: '/event', component: Event},
+    {path: '/components', component: Components},
+    {path: '/nextTick', component: NextTick},
     {path: '/*', component: NotFound}
 
 ]
