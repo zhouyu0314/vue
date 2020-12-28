@@ -42,6 +42,7 @@ import ArrayFilterAndSort from "../views/Vue.js实战/views/数组更新/ArrayFi
 import Event from "../views/Vue.js实战/views/$event/Event";
 import Components from "../views/Vue.js实战/views/组件详解/Components";
 import NextTick from "../views/Vue.js实战/views/$nextTick/NextTick";
+import Rander from "../views/Vue.js实战/views/rander/Rander";
 Vue.use(VueRouter)
 const routes = [
     {path: '/', component: Index},
@@ -85,6 +86,7 @@ const routes = [
     {path: '/event', component: Event},
     {path: '/components', component: Components},
     {path: '/nextTick', component: NextTick},
+    {path: '/rander', component: Rander},
     {path: '/*', component: NotFound}
 
 ]

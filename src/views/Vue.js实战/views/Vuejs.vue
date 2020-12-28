@@ -6,6 +6,7 @@
         <el-button size="mini" type="primary" @click="toEvent" class="vuejs">vue的$event</el-button>
         <el-button size="mini" type="primary" @click="toComponents" class="vuejs">vue的components</el-button>
         <el-button size="mini" type="primary" @click="toNextTick" class="vuejs">vue的NextTick</el-button>
+        <el-button size="mini" type="primary" @click="toRander" class="vuejs">Rander</el-button>
     </div>
 </template>
 
@@ -30,6 +31,9 @@
             },
             toNextTick(){
                 this.$router.push("nextTick");
+            },
+            toRander(){
+                this.$router.push("rander");
             }
         }
     }
