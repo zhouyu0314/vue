@@ -43,6 +43,21 @@ import Event from "../views/Vue.js实战/views/$event/Event";
 import Components from "../views/Vue.js实战/views/组件详解/Components";
 import NextTick from "../views/Vue.js实战/views/$nextTick/NextTick";
 import Rander from "../views/Vue.js实战/views/rander/Rander";
+import Query from "../views/Vue.js实战/views/vueRouter/components/Query";
+
+
+const Router = () => import("../views/Vue.js实战/views/vueRouter/Router");//路由懒加载
+const SubA = () => import("../views/Vue.js实战/views/vueRouter/components/SubA");//路由懒加载
+const SubB = () => import("../views/Vue.js实战/views/vueRouter/components/SubB");//路由懒加载
+const User = () => import("../views/Vue.js实战/views/vueRouter/components/User");//路由懒加载
+const query = () => import("../views/Vue.js实战/views/vueRouter/components/Query");//路由懒加载
+
+
+//路由嵌套
+const RouterNews = () => import("../views/Vue.js实战/views/vueRouter/components/RouterNews");//路由懒加载
+const RouterMessage = () => import("../views/Vue.js实战/views/vueRouter/components/RouterMessage");//路由懒加载
+
+
 Vue.use(VueRouter)
 const routes = [
     {path: '/', component: Index},
@@ -87,12 +102,36 @@ const routes = [
     {path: '/components', component: Components},
     {path: '/nextTick', component: NextTick},
     {path: '/rander', component: Rander},
+    {
+        path: '/router',
+        component: Router,
+        children: [//嵌套路由
+            {path: '',redirect:'news'},//子路径不要加/
+            {path: 'news',component:RouterNews},//子路径不要加/
+            {path: 'message',component:RouterMessage}//子路径不要加/
+        ]
+    },
+    {path: '/router/subA', component:
+        SubA, meta: {
+            title: '子组件A'
+        }},
+    {path: '/router/subB', component: SubB,meta: {
+            title: '子组件B'
+        }},
+    {path: '/router/User/:userId', component: User},//动态路由
+    {path: '/query', component: Query},//动态路由
     {path: '/*', component: NotFound}
 
 ]
 
 const router = new VueRouter({
-  routes
+    routes,
+    mode: 'history'//默认是hash模式，可修改为history模式
+})
+//导航守卫
+router.beforeEach((to,from,next)=>{
+    document.title =  to.matched[0].meta.title;//改变标题
+    next();//此方法保证可以跳转路由
 })
 
 export default router

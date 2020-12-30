@@ -7,6 +7,7 @@
         <el-button size="mini" type="primary" @click="toComponents" class="vuejs">vue的components</el-button>
         <el-button size="mini" type="primary" @click="toNextTick" class="vuejs">vue的NextTick</el-button>
         <el-button size="mini" type="primary" @click="toRander" class="vuejs">Rander</el-button>
+        <el-button size="mini" type="primary" @click="toRouter" class="vuejs">跳转到Router</el-button>
     </div>
 </template>
 
@@ -20,20 +21,23 @@
             toArrayUpdate() {
                 this.$router.push("arrayUpdate")
             },
-            toArrayFilterAndSort(){
+            toArrayFilterAndSort() {
                 this.$router.push("arrayFilterAndSort");
             },
-            toEvent(){
+            toEvent() {
                 this.$router.push("event");
             },
-            toComponents(){
+            toComponents() {
                 this.$router.push("components");
             },
-            toNextTick(){
+            toNextTick() {
                 this.$router.push("nextTick");
             },
-            toRander(){
+            toRander() {
                 this.$router.push("rander");
+            },
+            toRouter() {
+                this.$router.push("router")
             }
         }
     }
