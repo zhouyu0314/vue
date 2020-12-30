@@ -11,6 +11,7 @@ import '@/utils/constant';
 import '@/utils/util';
 //import Add from './components/Add'  定义全局组件
 //Vue.component('my-add',Add)
+//产品构建提示信息 发布的时候可以改成true
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(uploader)

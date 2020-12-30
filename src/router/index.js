@@ -106,18 +106,25 @@ const routes = [
         path: '/router',
         component: Router,
         children: [//嵌套路由
-            {path: '',redirect:'news'},//子路径不要加/
-            {path: 'news',component:RouterNews},//子路径不要加/
-            {path: 'message',component:RouterMessage}//子路径不要加/
+            {path: '', redirect: 'news'},//子路径不要加/
+            {path: 'news', component: RouterNews},//子路径不要加/
+            {path: 'message', component: RouterMessage}//子路径不要加/
         ]
     },
-    {path: '/router/subA', component:
+    {
+        path: '/router/subA', component:
         SubA, meta: {
             title: '子组件A'
-        }},
-    {path: '/router/subB', component: SubB,meta: {
+        }, beforeEnter: (to, from, next) => {
+            //console.log('路由独享的守卫');
+            next();
+        }
+    },
+    {
+        path: '/router/subB', component: SubB, meta: {
             title: '子组件B'
-        }},
+        }
+    },
     {path: '/router/User/:userId', component: User},//动态路由
     {path: '/query', component: Query},//动态路由
     {path: '/*', component: NotFound}
@@ -128,10 +135,16 @@ const router = new VueRouter({
     routes,
     mode: 'history'//默认是hash模式，可修改为history模式
 })
-//导航守卫
-router.beforeEach((to,from,next)=>{
-    document.title =  to.matched[0].meta.title;//改变标题
+//导航守卫 前置守卫(guard) ---全局
+router.beforeEach((to, from, next) => {
+    document.title = to.matched[0].meta.title;//改变标题
+    //console.log('------前置守卫-----');
     next();//此方法保证可以跳转路由
+})
+
+//后置钩子(hook) ---全局
+router.afterEach((to, from) => {
+    //console.log('------后置钩子-----');
 })
 
 export default router
