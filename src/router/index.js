@@ -51,6 +51,7 @@ const SubA = () => import("../views/Vue.js实战/views/vueRouter/components/SubA
 const SubB = () => import("../views/Vue.js实战/views/vueRouter/components/SubB");//路由懒加载
 const User = () => import("../views/Vue.js实战/views/vueRouter/components/User");//路由懒加载
 const query = () => import("../views/Vue.js实战/views/vueRouter/components/Query");//路由懒加载
+const TabBarIndex = () => import("../views/tabbar/TabBarIndex");//路由懒加载
 
 
 //路由嵌套
@@ -127,6 +128,7 @@ const routes = [
     },
     {path: '/router/User/:userId', component: User},//动态路由
     {path: '/query', component: Query},//动态路由
+    {path: '/tabBarIndex', component: TabBarIndex},//动态路由
     {path: '/*', component: NotFound}
 
 ]

@@ -37,6 +37,8 @@
         <el-button type="primary" @click="toSlotDemo" style="margin-top: 10px">跳转到SlotDemo</el-button>
         <el-button type="primary" @click="toPromiseDemo" style="margin-top: 10px">跳转到Promise</el-button>
         <el-button type="primary" @click="toVuejs" style="margin-top: 10px">跳转到Vuejs</el-button>
+        <el-divider content-position="left">Demo</el-divider>
+        <el-button type="primary" @click="toTabbar" style="margin-top: 10px">跳转到Tabbar</el-button>
 
     </div>
 </template>
@@ -152,6 +154,9 @@
             toVuejs(){
                 this.$router.push("vuejs")
             },
+            toTabbar(){
+                this.$router.push("tabBarIndex");
+            }
 
 
         }
