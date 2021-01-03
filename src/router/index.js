@@ -45,7 +45,6 @@ import NextTick from "../views/Vue.js实战/views/$nextTick/NextTick";
 import Rander from "../views/Vue.js实战/views/rander/Rander";
 import Query from "../views/Vue.js实战/views/vueRouter/components/Query";
 
-
 const Router = () => import("../views/Vue.js实战/views/vueRouter/Router");//路由懒加载
 const SubA = () => import("../views/Vue.js实战/views/vueRouter/components/SubA");//路由懒加载
 const SubB = () => import("../views/Vue.js实战/views/vueRouter/components/SubB");//路由懒加载
@@ -57,6 +56,7 @@ const TabBarIndex = () => import("../views/tabbar/TabBarIndex");//路由懒加�
 //路由嵌套
 const RouterNews = () => import("../views/Vue.js实战/views/vueRouter/components/RouterNews");//路由懒加载
 const RouterMessage = () => import("../views/Vue.js实战/views/vueRouter/components/RouterMessage");//路由懒加载
+const vuex = () => import("../views/Vue.js实战/views/vuex/Vuex");//路由懒加载
 
 
 Vue.use(VueRouter)
@@ -129,6 +129,7 @@ const routes = [
     {path: '/router/User/:userId', component: User},//动态路由
     {path: '/query', component: Query},//动态路由
     {path: '/tabBarIndex', component: TabBarIndex},//动态路由
+    {path: '/vuex', component: vuex},//动态路由
     {path: '/*', component: NotFound}
 
 ]

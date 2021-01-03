@@ -8,6 +8,8 @@
         <el-button size="mini" type="primary" @click="toNextTick" class="vuejs">vue的NextTick</el-button>
         <el-button size="mini" type="primary" @click="toRander" class="vuejs">Rander</el-button>
         <el-button size="mini" type="primary" @click="toRouter" class="vuejs">跳转到Router</el-button>
+        <el-button size="mini" type="primary" @click="toVuex" class="vuejs">跳转到Vuex</el-button>
+
     </div>
 </template>
 
@@ -38,6 +40,9 @@
             },
             toRouter() {
                 this.$router.push("router")
+            },
+            toVuex(){
+                this.$router.push("vuex")
             }
         }
     }

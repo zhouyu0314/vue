@@ -16,7 +16,7 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(uploader)
 new Vue({
-  router,
-  store,
+  router,//Vue.prototype.$router = router
+  store,//Vue.prototype.$store = store
   render: h => h(App)
 }).$mount('#app')
