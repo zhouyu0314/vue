@@ -8,3 +8,16 @@ export function testAxiosA(data){
         data
     })
 }
+export function testAxiosPost(data){
+    return request({
+        url:'/api/file/textAxiosPost',
+        method:'post',
+        data
+    })
+}export function testAxiosGet(params){
+    return request({
+        url:'/api1/file/textAxios/2',
+        method:'get',
+        params
+    })
+}

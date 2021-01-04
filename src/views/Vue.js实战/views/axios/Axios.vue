@@ -3,12 +3,14 @@
         <el-button size="mini" type="success" @click="testAxiosA">测试axiosA</el-button>
         <el-button size="mini" type="success" @click="testAxiosB">测试axiosB</el-button>
         <el-button size="mini" type="success" @click="testAxiosAll">测试axiosAll</el-button>
+        <el-button size="mini" type="success" @click="testAxiosPost">测试axiosPost</el-button>
+        <el-button size="mini" type="success" @click="testAxiosGet">测试axiosGet</el-button>
     </div>
 </template>
 
 <script>
     import axios from 'axios'
-    import {testAxiosA} from './api/axios'
+    import {testAxiosA, testAxiosGet, testAxiosPost} from './api/axios'
 
     export default {
         name: "Axios",
@@ -65,6 +67,16 @@
                         },
                     })]).then(results => {
                     console.log(results);
+                })
+            },
+            testAxiosPost() {
+                testAxiosPost({}).then(res => {
+                    console.log(res);
+                })
+            },
+            testAxiosGet() {
+                testAxiosGet({}).then(res => {
+                    console.log(res);
                 })
             }
         }
