@@ -47,7 +47,6 @@
                 this.updateGameAsync(param).then(res =>{
                     console.log(res);
                 })
-                //this.updateGameAsync(param);
             },
             updateA(){
                 this.$store.commit('updateMoudleAName','李四');
