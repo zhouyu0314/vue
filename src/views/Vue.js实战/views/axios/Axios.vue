@@ -8,17 +8,33 @@
 
 <script>
     import axios from 'axios'
+    import {testAxiosA} from './api/axios'
 
     export default {
         name: "Axios",
         methods: {
             testAxiosA() {
-                axios({
-                    url: 'http://123.207.32.32:8000/home/multidata',
-                    method: 'get'//默认就是get
-                }).then((res) => {
+                // axios({
+                //     url: 'http://123.207.32.32:8000/home/multidata',
+                //     method: 'get'//默认就是get
+                // }).then((res) => {
+                //     console.log(res);
+                // })
+
+                testAxiosA({}).then(res => {
                     console.log(res);
+                }).catch(err => {//如果配置了响应拦截器，就不会到catch里面了catch就作废了
+                    console.log(err);
                 })
+                // request({
+                //     url: '/home/multidata/123',
+                //     method: 'get'//默认就是get
+                // }).then(res => {
+                //     console.log(res);
+                // }).catch(err => {//如果配置了响应拦截器，就不会到catch里面了catch就作废了
+                //     console.log(err);
+                // })
+
             },
             testAxiosB() {
                 axios({
@@ -34,7 +50,7 @@
             },
             testAxiosAll() {
                 axios.defaults.baseURL = 'http://123.207.32.32:8000';
-                axios.defaults.timeout =5000;//超时时间
+                axios.defaults.timeout = 5000;//超时时间
                 axios.all([
                     axios({
                         url: '/home/multidata',
