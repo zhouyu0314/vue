@@ -14,6 +14,10 @@
         <el-button size="mini" type="success" @click="subGame">-</el-button>
         <el-button size="mini" type="success" @click="updateGame">update</el-button>
 
+        <el-divider content-position="left">moudle</el-divider>
+        <h4>name：{{this.$store.state.a.name}}</h4>
+        <h4>getters：{{this.$store.getters.moudleAPlus}}</h4>
+        <el-button size="mini" type="success" @click="updateA">修改moudleA里的name</el-button>
     </div>
 </template>
 
@@ -21,7 +25,6 @@
     import AddNum from "./components/AddNum";
     import SubNum from "./components/SubNum";
     import {mapState, mapGetters,mapMutations,mapActions} from "vuex";
-    import {UPDATE_GAME_ATTR_ASYNC} from  '@/store/actions-types';
     export default {
         name: "Vuex",
         components: {
@@ -45,6 +48,9 @@
                     console.log(res);
                 })
                 //this.updateGameAsync(param);
+            },
+            updateA(){
+                this.$store.commit('updateMoudleAName','李四');
             }
         }
     }
