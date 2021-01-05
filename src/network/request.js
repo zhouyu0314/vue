@@ -1,5 +1,4 @@
 import axios from 'axios'
-import Vue from 'vue';
 
 //1.创建axios实例
 const service = axios.create({//axios.create()返回的是Promise
