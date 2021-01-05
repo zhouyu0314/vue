@@ -9,6 +9,7 @@
         <el-button size="mini" type="primary" @click="toRander" class="vuejs">Rander</el-button>
         <el-button size="mini" type="primary" @click="toRouter" class="vuejs">跳转到Router</el-button>
         <el-button size="mini" type="primary" @click="toVuex" class="vuejs">跳转到Vuex</el-button>
+        <el-button size="mini" type="primary" @click="toAxios" class="vuejs">跳转到axios</el-button>
 
     </div>
 </template>
@@ -43,6 +44,9 @@
             },
             toVuex(){
                 this.$router.push("vuex")
+            },
+            toAxios(){
+                this.$router.push("axios")
             }
         }
     }

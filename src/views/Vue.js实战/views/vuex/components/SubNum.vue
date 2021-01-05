@@ -9,14 +9,6 @@
 </template>
 
 <script>
-    import {
-        ADD,
-        ADD_N,
-        SUB,
-        SUB_N,
-        ADD_GAME_ATTR,
-        SUB_GAME_ATTR
-    } from '@/store/mutations-types'
     import {mapMutations,mapActions} from "vuex"
     export default {
         name: "SubNum",
@@ -26,13 +18,13 @@
             }
         },
         methods:{
-            ...mapMutations([SUB,SUB_N]),
+            ...mapMutations(['sub','subN']),
             ...mapActions(['subAsync','subNAsync']),
             handle_sub(){
-                SUB;
+                this.sub();
             },
             handle_subN(){
-                [SUB_N](3);
+               this.subN(3);
             },
             async_sub(){
                 this.subAsync();
