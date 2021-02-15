@@ -23,6 +23,9 @@ const User = () => import("../views/Vue.js实战/views/vueRouter/components/User
 const query = () => import("../views/Vue.js实战/views/vueRouter/components/Query");//路由懒加载
 
 
+const Netty = () => import("../views/netty/Netty");//路由懒加载
+
+
 //路由嵌套
 const RouterNews = () => import("../views/Vue.js实战/views/vueRouter/components/RouterNews");//路由懒加载
 const RouterMessage = () => import("../views/Vue.js实战/views/vueRouter/components/RouterMessage");//路由懒加载
@@ -74,6 +77,7 @@ const routes = [
     {path: '/vuex', component: vuex},//动态路由
     {path: '/axios', component: Axios},//动态路由
 
+    {path: '/netty', component: Netty},//动态路由
 ]
 
 const router = new VueRouter({

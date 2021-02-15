@@ -8,7 +8,8 @@
         <el-button type="primary" @click="toBus" style="margin-top: 10px">跳转到BUS</el-button>
         <el-button type="primary" @click="toSlotDemo" style="margin-top: 10px">跳转到SlotDemo</el-button>
         <el-button type="primary" @click="toVuejs" style="margin-top: 10px">跳转到Vuejs</el-button>
-
+        <el-button type="primary" @click="toNetty" style="margin-top: 10px">跳转到Netty</el-button>
+<el-input v-model="userId" size="mini"></el-input>
     </div>
 </template>
 
@@ -16,7 +17,9 @@
     export default {
         name: "Index",
         data() {
-            return {}
+            return {
+                userId:'',
+            }
         },
         methods: {
             toCounter() {
@@ -37,6 +40,14 @@
             toVuejs(){
                 this.$router.push("vuejs")
             },
+            toNetty(){
+                this.$router.push({
+                    path:'/netty',
+                    query:{
+                        userId:this.userId
+                    }
+                })
+            }
 
 
         }
