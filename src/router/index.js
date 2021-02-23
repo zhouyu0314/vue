@@ -21,6 +21,7 @@ const SubA = () => import("../views/Vue.js实战/views/vueRouter/components/SubA
 const SubB = () => import("../views/Vue.js实战/views/vueRouter/components/SubB");//路由懒加载
 const User = () => import("../views/Vue.js实战/views/vueRouter/components/User");//路由懒加载
 const query = () => import("../views/Vue.js实战/views/vueRouter/components/Query");//路由懒加载
+const Test01 = () => import("@/views/Vue.js实战/views/test/Test01");//路由懒加载
 
 
 const Netty = () => import("../views/netty/Netty");//路由懒加载
@@ -78,6 +79,7 @@ const routes = [
     {path: '/axios', component: Axios},//动态路由
 
     {path: '/netty', component: Netty},//动态路由
+    {path: '/test01', component: Test01},//动态路由
 ]
 
 const router = new VueRouter({

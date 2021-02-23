@@ -9,6 +9,7 @@
         <el-button type="primary" @click="toSlotDemo" style="margin-top: 10px">跳转到SlotDemo</el-button>
         <el-button type="primary" @click="toVuejs" style="margin-top: 10px">跳转到Vuejs</el-button>
         <el-button type="primary" @click="toNetty" style="margin-top: 10px">跳转到Netty</el-button>
+        <el-button type="primary" @click="toTest" style="margin-top: 10px">跳转到Test</el-button>
 <el-input v-model="userId" size="mini"></el-input>
     </div>
 </template>
@@ -47,7 +48,10 @@
                         userId:this.userId
                     }
                 })
-            }
+            },
+          toTest(){
+            this.$router.push("test01")
+          }
 
 
         }
